@@ -1,7 +1,7 @@
 function Header({ currentPage, onChangePage }) {
   return (
     <header>
-      <h1>Application web de jeux cognitifs</h1>
+      <h1 className="mot-hover">Application web de jeux cognitifs</h1>
 
       <nav>
         <button
@@ -18,8 +18,6 @@ function Header({ currentPage, onChangePage }) {
           Catalogue
         </button>
       </nav>
-
-      <p>Page actuelle : {currentPage}</p>
     </header>
   );
 }

@@ -35,6 +35,15 @@ h3 {
   font-family: var(--police-titre);
   color: var(--vert-fonce);
   letter-spacing: 1px;
+
+  transition: 0.2s;
+}
+
+.mot-hover:hover {
+  color: var(--jaune);
+  transform: translateY(2px);
+  transform: scale(1.05);
+  text-shadow: 2px 2px 0 var(--vert-fonce);
 }
 
 p {
@@ -87,4 +96,35 @@ footer {
 footer p {
   color: white;
   margin: 5px 0;
+}
+
+button {
+  font-family: var(--police-titre);
+  font-size: 18px;
+  font-weight: 700;
+
+  background-color: var(--vert-fonce);
+  color: white;
+
+  border: none;
+  border-radius: 14px;
+
+  padding: 14px 24px;
+  margin: 10px;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 0 var(--fond);
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: var(--jaune);
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 #2f7d00;
+}
+
+button:active {
+  transform: translateY(5px);
+  box-shadow: none;
 }

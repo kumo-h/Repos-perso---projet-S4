@@ -36,7 +36,7 @@ const sections = [
 
   return (
     <main>
-        <h1>Présentation du projet</h1>
+        <h1 className="mot-hover">Présentation du projet</h1>
         
         {sections.map((section) => (
           <ProjectSection
