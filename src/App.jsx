@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PagePresentation from "./pages/PagePresentation";
 import Catalogue from "./pages/Catalogue";
+import Memory from "./pages/Memory";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("presentation");
@@ -17,6 +18,7 @@ function App() {
 
       {currentPage === "presentation" && <PagePresentation />}
       {currentPage === "catalogue" && <Catalogue />}
+      {currentPage === "memory" && <Memory />}
 
       <Footer />
     </div>

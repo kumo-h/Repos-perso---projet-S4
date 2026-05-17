@@ -17,6 +17,13 @@ function Header({ currentPage, onChangePage }) {
         >
           Catalogue
         </button>
+
+        <button
+          type="button"
+          onClick={() => onChangePage("memory")}
+        >
+          Memory
+        </button>
       </nav>
     </header>
   );

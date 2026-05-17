@@ -25,8 +25,10 @@ function Catalogue() {
   },
 ];
 
+
   return (
     <main>
+
       <h1 className="mot-hover">Catalogue de jeux</h1>
 
       {games.map((game) => (

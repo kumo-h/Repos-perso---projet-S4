@@ -128,3 +128,98 @@ button:active {
   transform: translateY(5px);
   box-shadow: none;
 }
+
+/* Memory */
+
+.memory-page {
+  max-width: 1000px;
+}
+
+.memory-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.memory-header p {
+  background: none;
+  border-left: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.memory-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.memory-stats p {
+  margin: 0;
+  font-weight: 700;
+  color: var(--texte);
+}
+
+.memory-stats button {
+  border: none;
+  border-radius: 16px;
+  padding: 12px 18px;
+  background-color: var(--bleu);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.memory-card {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 22px;
+  background-color: var(--vert);
+  color: white;
+  font-size: 42px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 0 var(--vert-fonce);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.memory-card:hover:not(:disabled) {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 0 var(--vert-fonce);
+}
+
+.memory-card.flipped {
+  background-color: white;
+  color: var(--texte);
+  box-shadow: 0 8px 0 #d1d5db;
+}
+
+.memory-card:disabled {
+  cursor: default;
+}
+
+.victory-message {
+  color: var(--vert-fonce) !important;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+@media (max-width: 650px) {
+  .memory-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .memory-card {
+    font-size: 34px;
+  }
+}
