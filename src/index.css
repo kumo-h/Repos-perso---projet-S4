@@ -1,0 +1,90 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Raleway:wght@400;500;600;700&display=swap');
+
+/* Variables globales */
+:root {
+  --vert: #58cc02;
+  --vert-fonce: #46a302;
+  --bleu: #1cb0f6;
+  --jaune: #ffc800;
+  --rouge: #ff4b4b;
+
+  --fond: #f7fff0;
+  --texte: #1f2937;
+  --texte-clair: #4b5563;
+  --blanc: #ffffff;
+
+  --police-titre: 'Bungee', sans-serif;
+  --police-texte: 'Raleway', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--police-texte);
+  background-color: var(--fond);
+  color: var(--texte);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--police-titre);
+  color: var(--vert-fonce);
+  letter-spacing: 1px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--texte-clair);
+}
+
+header {
+  background-color: var(--vert);
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+header h1 {
+  color: white;
+  margin: 0;
+}
+
+header p {
+  color: white;
+  margin-top: 10px;
+}
+
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+main p {
+  background-color: var(--blanc);
+  border-left: 8px solid var(--vert);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Footer */
+footer {
+  background-color: var(--bleu);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+footer p {
+  color: white;
+  margin: 5px 0;
+}
