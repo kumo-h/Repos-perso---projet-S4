@@ -1,7 +1,49 @@
 import { useState } from "react";
 import MemoryCard from "../components/MemoryCard";
 
-const symbols = ["🍎", "🍌", "🍇", "🍓", "🍒", "🥝"];
+const allSymbols = [
+  "🍎",
+  "🍌",
+  "🍇",
+  "🍓",
+  "🍒",
+  "🥝",
+  "🍍",
+  "🥥",
+  "🍉",
+  "🍑",
+];
+
+const levels = [
+  {
+    id: 1,
+    name: "Facile",
+    pairs: 4,
+    maxMoves: 10,
+    columns: 4,
+  },
+  {
+    id: 2,
+    name: "Moyen",
+    pairs: 6,
+    maxMoves: 16,
+    columns: 4,
+  },
+  {
+    id: 3,
+    name: "Difficile",
+    pairs: 8,
+    maxMoves: 22,
+    columns: 4,
+  },
+  {
+    id: 4,
+    name: "Expert",
+    pairs: 10,
+    maxMoves: 28,
+    columns: 5,
+  },
+];
 
 function shuffleArray(array) {
   const shuffled = [...array];
@@ -18,11 +60,12 @@ function shuffleArray(array) {
   return shuffled;
 }
 
-function createCards() {
-  const pairs = [...symbols, ...symbols];
+function createCards(numberOfPairs) {
+  const selectedSymbols = allSymbols.slice(0, numberOfPairs);
+  const pairs = [...selectedSymbols, ...selectedSymbols];
 
   const cards = pairs.map((symbol, index) => ({
-    id: index + 1,
+    id: `${symbol}-${index}`,
     symbol,
     isFlipped: false,
     isMatched: false,
@@ -32,18 +75,27 @@ function createCards() {
 }
 
 function Memory() {
-  const [cards, setCards] = useState(createCards);
+  const [levelIndex, setLevelIndex] = useState(0);
+  const [cards, setCards] = useState(() => createCards(levels[0].pairs));
   const [firstCard, setFirstCard] = useState(null);
-  const [secondCard, setSecondCard] = useState(null);
   const [moves, setMoves] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
+  const [gameStatus, setGameStatus] = useState("playing");
+
+  const currentLevel = levels[levelIndex];
+  const remainingMoves = currentLevel.maxMoves - moves;
+  const isLastLevel = levelIndex === levels.length - 1;
 
   function handleCardClick(clickedCard) {
-    if (isLocked) {
+    if (isLocked || gameStatus !== "playing") {
       return;
     }
 
     if (clickedCard.isFlipped || clickedCard.isMatched) {
+      return;
+    }
+
+    if (firstCard !== null && clickedCard.id === firstCard.id) {
       return;
     }
 
@@ -60,19 +112,19 @@ function Memory() {
       return;
     }
 
-    setSecondCard(clickedCard);
-    setMoves((previousMoves) => previousMoves + 1);
+    const newMoves = moves + 1;
+    setMoves(newMoves);
 
     const isMatch = firstCard.symbol === clickedCard.symbol;
 
     if (isMatch) {
-      handleMatch(firstCard, clickedCard, updatedCards);
+      handleMatch(firstCard, clickedCard, updatedCards, newMoves);
     } else {
-      handleMismatch(firstCard, clickedCard, updatedCards);
+      handleMismatch(firstCard, clickedCard, updatedCards, newMoves);
     }
   }
 
-  function handleMatch(cardA, cardB, currentCards) {
+  function handleMatch(cardA, cardB, currentCards, currentMoves) {
     const matchedCards = currentCards.map((card) =>
       card.id === cardA.id || card.id === cardB.id
         ? { ...card, isMatched: true }
@@ -80,10 +132,21 @@ function Memory() {
     );
 
     setCards(matchedCards);
-    resetSelection();
+    setFirstCard(null);
+
+    const hasWon = matchedCards.every((card) => card.isMatched);
+
+    if (hasWon) {
+      setGameStatus("won");
+      return;
+    }
+
+    if (currentMoves >= currentLevel.maxMoves) {
+      setGameStatus("lost");
+    }
   }
 
-  function handleMismatch(cardA, cardB, currentCards) {
+  function handleMismatch(cardA, cardB, currentCards, currentMoves) {
     setIsLocked(true);
 
     setTimeout(() => {
@@ -94,54 +157,114 @@ function Memory() {
       );
 
       setCards(hiddenCards);
-      resetSelection();
+      setFirstCard(null);
       setIsLocked(false);
+
+      if (currentMoves >= currentLevel.maxMoves) {
+        setGameStatus("lost");
+      }
     }, 800);
   }
 
-  function resetSelection() {
+  function restartLevel() {
+    setCards(createCards(currentLevel.pairs));
     setFirstCard(null);
-    setSecondCard(null);
+    setMoves(0);
+    setIsLocked(false);
+    setGameStatus("playing");
+  }
+
+  function goToNextLevel() {
+    if (isLastLevel) {
+      return;
+    }
+
+    const nextLevelIndex = levelIndex + 1;
+    const nextLevel = levels[nextLevelIndex];
+
+    setLevelIndex(nextLevelIndex);
+    setCards(createCards(nextLevel.pairs));
+    setFirstCard(null);
+    setMoves(0);
+    setIsLocked(false);
+    setGameStatus("playing");
   }
 
   function restartGame() {
-    setCards(createCards());
+    setLevelIndex(0);
+    setCards(createCards(levels[0].pairs));
     setFirstCard(null);
-    setSecondCard(null);
     setMoves(0);
     setIsLocked(false);
+    setGameStatus("playing");
   }
-
-  const hasWon = cards.every((card) => card.isMatched);
 
   return (
     <main className="memory-page">
       <section className="memory-header">
         <h1>Memory</h1>
+
         <p>
-          Retrouvez toutes les paires en retournant deux cartes à chaque tour.
+          Retrouvez toutes les paires. La difficulté augmente à chaque niveau.
         </p>
 
         <div className="memory-stats">
+          <p>Niveau : {currentLevel.name}</p>
+          <p>Paires : {currentLevel.pairs}</p>
           <p>Coups joués : {moves}</p>
-          <button type="button" onClick={restartGame}>
-            Recommencer
-          </button>
+          <p>Coups restants : {remainingMoves}</p>
         </div>
 
-        {hasWon && (
-          <p className="victory-message">
-            Bravo, vous avez gagné en {moves} coups !
-          </p>
+        {gameStatus === "won" && !isLastLevel && (
+          <div className="memory-message success">
+            <p>Bravo ! Niveau terminé en {moves} coups.</p>
+            <button type="button" onClick={goToNextLevel}>
+              Niveau suivant
+            </button>
+          </div>
+        )}
+
+        {gameStatus === "won" && isLastLevel && (
+          <div className="memory-message success">
+            <p>Excellent ! Vous avez terminé tous les niveaux.</p>
+            <button type="button" onClick={restartGame}>
+              Recommencer depuis le début
+            </button>
+          </div>
+        )}
+
+        {gameStatus === "lost" && (
+          <div className="memory-message danger">
+            <p>Perdu ! Vous avez dépassé le nombre de coups autorisés.</p>
+            <button type="button" onClick={restartLevel}>
+              Recommencer le niveau
+            </button>
+          </div>
+        )}
+
+        {gameStatus === "playing" && (
+          <button
+            type="button"
+            className="restart-button"
+            onClick={restartLevel}
+          >
+            Recommencer le niveau
+          </button>
         )}
       </section>
 
-      <section className="memory-grid">
+      <section
+        className="memory-grid"
+        style={{
+          gridTemplateColumns: `repeat(${currentLevel.columns}, 1fr)`,
+        }}
+      >
         {cards.map((card) => (
           <MemoryCard
             key={card.id}
             card={card}
             onCardClick={handleCardClick}
+            isDisabled={isLocked || gameStatus !== "playing"}
           />
         ))}
       </section>

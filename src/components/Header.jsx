@@ -2,6 +2,7 @@ function Header({ currentPage, onChangePage }) {
   return (
     <header>
       <h1 className="mot-hover">Application web de jeux cognitifs</h1>
+      <p>Page actuelle : {currentPage}</p>
 
       <nav>
         <button

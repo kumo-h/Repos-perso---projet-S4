@@ -151,32 +151,26 @@ button:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 14px;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .memory-stats p {
   margin: 0;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background-color: white;
+  border-left: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   font-weight: 700;
   color: var(--texte);
 }
 
-.memory-stats button {
-  border: none;
-  border-radius: 16px;
-  padding: 12px 18px;
-  background-color: var(--bleu);
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-}
-
 .memory-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 18px;
-  max-width: 620px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -190,7 +184,10 @@ button:active {
   font-weight: 800;
   cursor: pointer;
   box-shadow: 0 8px 0 var(--vert-fonce);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .memory-card:hover:not(:disabled) {
@@ -204,22 +201,72 @@ button:active {
   box-shadow: 0 8px 0 #d1d5db;
 }
 
+.memory-card.matched {
+  background-color: var(--jaune);
+  color: var(--texte);
+  box-shadow: 0 8px 0 #d9a900;
+}
+
 .memory-card:disabled {
   cursor: default;
 }
 
-.victory-message {
-  color: var(--vert-fonce) !important;
-  font-weight: 800;
-  font-size: 22px;
+.restart-button,
+.memory-message button {
+  border: none;
+  border-radius: 16px;
+  padding: 12px 18px;
+  background-color: var(--bleu);
+  color: white;
+  font-family: var(--police-texte);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-@media (max-width: 650px) {
+.restart-button:hover,
+.memory-message button:hover {
+  background-color: #0b91d0;
+}
+
+.memory-message {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.memory-message p {
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.memory-message.success {
+  border: 3px solid var(--vert);
+}
+
+.memory-message.danger {
+  border: 3px solid var(--rouge);
+}
+
+.memory-message.danger p {
+  color: var(--rouge);
+}
+
+@media (max-width: 350px) {
   .memory-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr) !important;
   }
 
   .memory-card {
-    font-size: 34px;
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 500px) {
+  .memory-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 }

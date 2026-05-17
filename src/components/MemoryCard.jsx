@@ -1,12 +1,14 @@
-function MemoryCard({ card, onCardClick }) {
+function MemoryCard({ card, onCardClick, isDisabled }) {
   const isVisible = card.isFlipped || card.isMatched;
 
   return (
     <button
       type="button"
-      className={`memory-card ${isVisible ? "flipped" : ""}`}
+      className={`memory-card ${isVisible ? "flipped" : ""} ${
+        card.isMatched ? "matched" : ""
+      }`}
       onClick={() => onCardClick(card)}
-      disabled={card.isFlipped || card.isMatched}
+      disabled={isDisabled || card.isFlipped || card.isMatched}
     >
       {isVisible ? card.symbol : "?"}
     </button>
