@@ -7,6 +7,7 @@
   --bleu: #1cb0f6;
   --jaune: #ffc800;
   --rouge: #ff4b4b;
+  --rose : #ff8da1;
 
   --fond: #f7fff0;
   --texte: #1f2937;
@@ -73,10 +74,11 @@ p {
   cursor: pointer;
 }
 
+
 .navbar-logo {
   margin: 0;
   font-size: 24px;
-  color: var(--vert);
+  color: var(--rose);
 }
 
 /* Zone Milieu : Titre dynamique */
