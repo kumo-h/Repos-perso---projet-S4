@@ -9,33 +9,33 @@ function PagePresentation() {
 const sections = [
   {
     title: "Le projet",
-    description: "Notre projet est de concevoir une application web de jeux cognitifs avec React. Nous avons choisi de développer une application web pour sa facilité d'accès et sa compatibilité avec différents appareils. L'application se concentrera sur des jeux cognitifs simples et amusants, visant à stimuler les fonctions cognitives des utilisateurs. Nous avons pour cela développé une page de présentation du projet, une page de catalogue pour jeux pour accéder aux différents jeux, ainsi qu'une page dédiée à la gestion de projet ainsi qu'aux conclusions que l'équipe a tirées de ce projet.",
+    description: "Notre projet consiste à concevoir une application web de jeux cognitifs développée avec React. L’objectif est de proposer une plateforme simple, accessible et compatible avec différents appareils, permettant aux utilisateurs de découvrir plusieurs jeux visant à stimuler certaines fonctions cognitives comme la mémoire, l’attention ou la rapidité de réflexion. Pour structurer l’application, nous avons développé une page de présentation, ainsi qu'un catalogue permettant d’accéder aux différents jeux.",
     couleur: "var(--bleu)",
   },
   {
     title: "Les objectifs",
-    description: "L'objectif du projet est de concevoir une application simple de jeux cognitifs avec React. Nous avons réduit notre périmètre à un jeu : le Memory.",  
+    description: "L’objectif du projet est de concevoir une application web de jeux cognitifs avec React, à la fois simple, claire et évolutive. Notre ambition initiale était de proposer plusieurs mini-jeux, mais nous avons choisi de recentrer le périmètre sur un Memory complet afin de garantir une version fonctionnelle, stable et présentable dans le temps imparti. Ce choix permet également de conserver une architecture modulaire, pensée pour accueillir d’autres jeux par la suite.",
     couleur: "var(--vert)",
   },
   {
     title: "L'équipe",
-    description: "Ce projet a été réalisé par l'équipe suivante : Tendry Arondriaka MANAMBITSOA et Inès LEBOUC-DHOMMEE, encadrés par Yannick KERGOSIEN. Nous avons travaillé en étroite collaboration tout au long du projet, partageant nos idées et nos compétences pour atteindre les objectifs fixés.",
+    description: "Le projet a été réalisé en binôme par Tendry Arondriaka MANAMBITSOA et Inès LEBOUC-DHOMMEE, sous l’encadrement de Yannick KERGOSIEN. Tout au long du semestre, nous avons travaillé de manière collaborative, en confrontant nos idées, en répartissant les tâches et en mettant en commun nos compétences. Cette organisation nous a permis d’avancer progressivement, de résoudre les difficultés rencontrées et de construire une application cohérente avec les objectifs fixés.",
     couleur: "var(--jaune)",
   },
   {
     title: "Le contexte de développement",
-    description: "Intéressée par les jeux vidéo, et l'informatique, l'équipe a eu l'idée de concevoir une application de jeux cognitifs. Ce projet leur a permis de développer leurs compétences en programmation, en conception d'application, en gestion de projet ainsi qu'en travail d'équipe",
+  description: "Intéressés par la programmation, les jeux vidéo et les sciences cognitives, nous avons choisi de concevoir une application web de jeux cognitifs. Ce projet nous a permis de nous initier au développement React, à la conception d’interface, à l'organisation de code et à la gestion de projet. Il a également été l’occasion de travailler en équipe, de prendre des décisions techniques et d’adapter nos objectifs aux contraintes rencontrées au cours du semestre.",
     couleur: "var(--rouge)",
   },
 
   {
     title: "La stack",
-    description: "Le choix des technologies fait par l'équipe a été : React, ShellModule, app web (et non native), Vite, GitHub. Pour les raisons d'accessibilité et de performance, nous avons opté pour cette stack technologique.",
+  description: "Pour développer notre application, nous avons choisi une stack web simple et adaptée à notre niveau : React pour la construction de l’interface, Vite pour faciliter le développement, JavaScript, HTML et CSS pour la structure et le style, ainsi que Git et GitHub pour le versionnement et le travail collaboratif. Nous avons également retenu une architecture de type Shell & Modules, qui permet de séparer la structure générale du site des différents jeux. Ce choix rend l’application plus claire, plus maintenable et plus facile à faire évoluer.",
     couleur: "var(--bleu)",
   },
   {
     title: "Les risques et les contraintes",
-    description: "Les principaux risques liés au projet sont liés à la gestion du temps et à la complexité technique de l'implémentation. Les contraintes incluent un planning à respecter.",
+  description: "Les principaux risques du projet concernaient la gestion du temps, la complexité technique de certaines fonctionnalités et la stabilité de l’application. Le planning du semestre nous imposait de faire des choix réalistes et de prioriser les éléments essentiels. Pour répondre à ces contraintes, nous avons choisi de recentrer le périmètre sur un Memory complet, fonctionnel et présentable, tout en conservant une architecture modulaire permettant d’ajouter d’autres jeux par la suite.",
     couleur: "var(--vert-fonce)",
   },
 ];

@@ -13,7 +13,7 @@ function GameCard({ title, description, status, color, onplay, category }) {
           <strong>Catégorie :</strong> {category}
         </span>
 
-        {/* 🚀 On regroupe le bouton et le statut ensemble dans la zone du bas */}
+        {/* On regroupe le bouton et le statut ensemble dans la zone du bas */}
         <div className="game-status">
           <button 
             type="button"
