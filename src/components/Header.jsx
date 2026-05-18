@@ -1,12 +1,23 @@
 function Header({ currentPage, onChangePage }) {
   return (
-    <header>
-      <h1 className="mot-hover">Application web de jeux cognitifs</h1>
-      <p>Page actuelle : {currentPage}</p>
+    <header className="navbar-container">
+      {/* ZONE GAUCHE : Nom de l'app (Cliquable) */}
+      <div className="navbar-left" onClick={() => onChangePage("presentation")}>
+        <h1 className="navbar-logo">BrainApp 🧠</h1>
+      </div>
 
-      <nav>
+      {/* ZONE MILIEU : Titre de la page actuelle */}
+      <div className="navbar-center">
+        <span className="current-page-title">
+          {currentPage === "presentation" ? "Présentation" : "Catalogue"}
+        </span>
+      </div>
+
+      {/* ZONE DROITE : Les boutons de navigation */}
+      <nav className="navbar-right">
         <button
           type="button"
+          className={currentPage === "presentation" ? "nav-btn active" : "nav-btn"}
           onClick={() => onChangePage("presentation")}
         >
           Présentation
@@ -14,16 +25,10 @@ function Header({ currentPage, onChangePage }) {
 
         <button
           type="button"
+          className={currentPage === "catalogue" ? "nav-btn active" : "nav-btn"}
           onClick={() => onChangePage("catalogue")}
         >
           Catalogue
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onChangePage("memory")}
-        >
-          Memory
         </button>
       </nav>
     </header>

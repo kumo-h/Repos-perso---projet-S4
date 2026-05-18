@@ -17,7 +17,7 @@ function App() {
       />
 
       {currentPage === "presentation" && <PagePresentation />}
-      {currentPage === "catalogue" && <Catalogue />}
+      {currentPage === "catalogue" && <Catalogue onChangePage={setCurrentPage} />}
       {currentPage === "memory" && <Memory />}
 
       <Footer />

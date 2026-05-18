@@ -1,8 +1,8 @@
-function ProjectSection({ title, description }) {
+function ProjectSection({ title, description, color }) {
   return (
   <section>
-    <h2 className="mot-hover">{title}</h2>
-    <p>{description}</p>
+    <h2 style={{ color: color }}>{title}</h2>
+    <p style={{borderLeftColor : color}}>{description}</p>
   </section>
   );
 }
